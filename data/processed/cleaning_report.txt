@@ -1,0 +1,17 @@
+DATA CLEANING REPORT
+==================================================
+
+Original dataset shape: (728, 7)
+Cleaned dataset shape: (701, 7)
+Rows removed: 27
+
+Algorithm distribution after cleaning:
+best_algo
+RandomForest          293
+LogisticRegression    268
+SVM                   140
+Name: count, dtype: int64
+
+Missing values after cleaning:
+Series([], dtype: int64)
+No missing values remaining!

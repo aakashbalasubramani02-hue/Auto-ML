@@ -1,0 +1,35 @@
+MODEL TRAINING PIPELINE REPORT
+==================================================
+
+Timestamp: 2026-04-17 00:16:08
+Dataset: data\processed\clean_meta_dataset.csv
+Total samples: 701
+Features: 5
+Target classes: LogisticRegression, RandomForest, SVM
+
+MODEL PERFORMANCE COMPARISON
+------------------------------
+
+LogisticRegression:
+  Accuracy:  0.4468
+  Precision: 0.3548
+  Recall:    0.4468
+  F1-Score:  0.3925
+  CV Score:  0.4357
+
+RandomForest:
+  Accuracy:  0.7234
+  Precision: 0.7201
+  Recall:    0.7234
+  F1-Score:  0.7190
+  CV Score:  0.7339
+
+XGBoost:
+  Accuracy:  0.7376
+  Precision: 0.7339
+  Recall:    0.7376
+  F1-Score:  0.7327
+  CV Score:  0.7375
+
+BEST MODEL: XGBoost
+Best Accuracy: 0.7376

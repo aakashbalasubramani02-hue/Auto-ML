@@ -1,0 +1,23 @@
+MODEL COMPARISON RESULTS
+===================================================================
+
+Dataset Information
+-------------------
+  Total Samples : 701
+  Features      : 5
+  Target Classes: LogisticRegression, RandomForest, SVM
+  Train / Test  : 560 / 141
+
+Model                    Accuracy  Precision     Recall   F1-Score   CV Score
+-----------------------------------------------------------------------------
+LogisticRegression         0.4468     0.3548     0.4468     0.3925     0.4357
+RandomForest               0.7234     0.7201     0.7234     0.7190     0.7339
+XGBoost                    0.7376     0.7339     0.7376     0.7327     0.7375
+-----------------------------------------------------------------------------
+
+Best Model  : XGBoost
+  Accuracy  : 0.7376
+  Precision : 0.7339
+  Recall    : 0.7376
+  F1-Score  : 0.7327
+  CV Score  : 0.7375

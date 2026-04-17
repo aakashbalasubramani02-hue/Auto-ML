@@ -1,0 +1,215 @@
+{
+  "timestamp": "2026-04-17T00:16:08.167782",
+  "dataset_info": {
+    "data_path": "data\\processed\\clean_meta_dataset.csv",
+    "total_samples": 701,
+    "n_features": 5,
+    "target_classes": [
+      "LogisticRegression",
+      "RandomForest",
+      "SVM"
+    ],
+    "train_size": 560,
+    "test_size": 141
+  },
+  "best_model": {
+    "name": "XGBoost",
+    "accuracy": 0.7375886524822695,
+    "parameters": {
+      "classifier__learning_rate": 0.1,
+      "classifier__max_depth": 7,
+      "classifier__n_estimators": 100,
+      "classifier__subsample": 0.8
+    }
+  },
+  "model_results": {
+    "LogisticRegression": {
+      "accuracy": 0.44680851063829785,
+      "precision": 0.354777862744216,
+      "recall": 0.44680851063829785,
+      "f1_score": 0.3924873401675114,
+      "best_cv_score": 0.43571428571428567,
+      "best_params": {
+        "classifier__C": 1.0,
+        "classifier__penalty": "l1",
+        "classifier__solver": "saga"
+      },
+      "confusion_matrix": [
+        [
+          23,
+          31,
+          0
+        ],
+        [
+          19,
+          40,
+          0
+        ],
+        [
+          13,
+          15,
+          0
+        ]
+      ],
+      "classification_report": {
+        "LogisticRegression": {
+          "precision": 0.41818181818181815,
+          "recall": 0.42592592592592593,
+          "f1-score": 0.42201834862385323,
+          "support": 54.0
+        },
+        "RandomForest": {
+          "precision": 0.46511627906976744,
+          "recall": 0.6779661016949152,
+          "f1-score": 0.5517241379310345,
+          "support": 59.0
+        },
+        "SVM": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 28.0
+        },
+        "accuracy": 0.44680851063829785,
+        "macro avg": {
+          "precision": 0.2944326990838619,
+          "recall": 0.3679640092069471,
+          "f1-score": 0.32458082885162926,
+          "support": 141.0
+        },
+        "weighted avg": {
+          "precision": 0.354777862744216,
+          "recall": 0.44680851063829785,
+          "f1-score": 0.3924873401675114,
+          "support": 141.0
+        }
+      }
+    },
+    "RandomForest": {
+      "accuracy": 0.723404255319149,
+      "precision": 0.7200540580139583,
+      "recall": 0.723404255319149,
+      "f1_score": 0.7189915425993132,
+      "best_cv_score": 0.7339285714285714,
+      "best_params": {
+        "classifier__max_depth": 10,
+        "classifier__min_samples_leaf": 1,
+        "classifier__min_samples_split": 2,
+        "classifier__n_estimators": 100
+      },
+      "confusion_matrix": [
+        [
+          44,
+          7,
+          3
+        ],
+        [
+          10,
+          44,
+          5
+        ],
+        [
+          7,
+          7,
+          14
+        ]
+      ],
+      "classification_report": {
+        "LogisticRegression": {
+          "precision": 0.7213114754098361,
+          "recall": 0.8148148148148148,
+          "f1-score": 0.7652173913043478,
+          "support": 54.0
+        },
+        "RandomForest": {
+          "precision": 0.7586206896551724,
+          "recall": 0.7457627118644068,
+          "f1-score": 0.7521367521367521,
+          "support": 59.0
+        },
+        "SVM": {
+          "precision": 0.6363636363636364,
+          "recall": 0.5,
+          "f1-score": 0.56,
+          "support": 28.0
+        },
+        "accuracy": 0.723404255319149,
+        "macro avg": {
+          "precision": 0.7054319338095483,
+          "recall": 0.6868591755597405,
+          "f1-score": 0.6924513811470333,
+          "support": 141.0
+        },
+        "weighted avg": {
+          "precision": 0.7200540580139583,
+          "recall": 0.723404255319149,
+          "f1-score": 0.7189915425993132,
+          "support": 141.0
+        }
+      }
+    },
+    "XGBoost": {
+      "accuracy": 0.7375886524822695,
+      "precision": 0.7339121649893555,
+      "recall": 0.7375886524822695,
+      "f1_score": 0.7327234879390782,
+      "best_cv_score": 0.7375,
+      "best_params": {
+        "classifier__learning_rate": 0.1,
+        "classifier__max_depth": 7,
+        "classifier__n_estimators": 100,
+        "classifier__subsample": 0.8
+      },
+      "confusion_matrix": [
+        [
+          43,
+          8,
+          3
+        ],
+        [
+          8,
+          47,
+          4
+        ],
+        [
+          8,
+          6,
+          14
+        ]
+      ],
+      "classification_report": {
+        "LogisticRegression": {
+          "precision": 0.7288135593220338,
+          "recall": 0.7962962962962963,
+          "f1-score": 0.7610619469026548,
+          "support": 54.0
+        },
+        "RandomForest": {
+          "precision": 0.7704918032786885,
+          "recall": 0.7966101694915254,
+          "f1-score": 0.7833333333333333,
+          "support": 59.0
+        },
+        "SVM": {
+          "precision": 0.6666666666666666,
+          "recall": 0.5,
+          "f1-score": 0.5714285714285714,
+          "support": 28.0
+        },
+        "accuracy": 0.7375886524822695,
+        "macro avg": {
+          "precision": 0.721990676422463,
+          "recall": 0.6976354885959406,
+          "f1-score": 0.7052746172215199,
+          "support": 141.0
+        },
+        "weighted avg": {
+          "precision": 0.7339121649893555,
+          "recall": 0.7375886524822695,
+          "f1-score": 0.7327234879390782,
+          "support": 141.0
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AutoML Algorithm Recommender</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+  <header>
+    <h1>&#129302; AutoML Algorithm Recommendation System</h1>
+    <p class="subtitle">Upload a dataset and discover the best ML algorithms using Meta-Learning</p>
+  </header>
+
+  <!-- Flash messages -->
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      {% for msg in messages %}
+        <div class="alert">&#9888; {{ msg }}</div>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+
+  <div class="card">
+    <h2>&#128193; Upload Your Dataset</h2>
+
+    <form id="uploadForm" action="/analyze" method="POST" enctype="multipart/form-data">
+
+      <!-- File input -->
+      <div class="form-group">
+        <label for="file">Select CSV File</label>
+        <input type="file" id="file" name="file" accept=".csv" required>
+      </div>
+
+      <!-- Target column — populated after file is chosen -->
+      <div class="form-group" id="targetGroup" style="display:none;">
+        <label for="target_column">Select Target Column</label>
+        <select id="target_column" name="target_column" required>
+          <option value="">-- choose column --</option>
+        </select>
+      </div>
+
+      <div id="previewBox"></div>
+
+      <button type="submit" id="submitBtn" class="btn" style="display:none;">
+        &#128269; Analyze &amp; Recommend
+      </button>
+
+    </form>
+  </div>
+
+  <footer>
+    <p>AutoML Recommendation System &mdash; Meta-Learning Pipeline</p>
+  </footer>
+
+</div>
+
+<script>
+  const fileInput   = document.getElementById('file');
+  const targetGroup = document.getElementById('targetGroup');
+  const targetSel   = document.getElementById('target_column');
+  const previewBox  = document.getElementById('previewBox');
+  const submitBtn   = document.getElementById('submitBtn');
+
+  fileInput.addEventListener('change', function () {
+    const file = this.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      const lines  = e.target.result.split('\n').filter(l => l.trim());
+      if (lines.length === 0) return;
+
+      // Parse header
+      const headers = lines[0].split(',').map(h => h.trim().replace(/^"|"$/g, ''));
+
+      // Populate dropdown
+      targetSel.innerHTML = '<option value="">-- choose column --</option>';
+      headers.forEach(h => {
+        const opt = document.createElement('option');
+        opt.value = h;
+        opt.textContent = h;
+        targetSel.appendChild(opt);
+      });
+      targetGroup.style.display = 'block';
+
+      // Build preview table (first 6 rows)
+      const rows    = lines.slice(1, 7);
+      let tableHTML = '<h3>&#128202; Dataset Preview (first 6 rows)</h3>';
+      tableHTML    += '<div class="table-wrap"><table class="preview-table"><thead><tr>';
+      headers.forEach(h => { tableHTML += `<th>${h}</th>`; });
+      tableHTML += '</tr></thead><tbody>';
+      rows.forEach(row => {
+        const cells = row.split(',').map(c => c.trim().replace(/^"|"$/g, ''));
+        tableHTML += '<tr>';
+        cells.forEach(c => { tableHTML += `<td>${c}</td>`; });
+        tableHTML += '</tr>';
+      });
+      tableHTML += '</tbody></table></div>';
+      previewBox.innerHTML = tableHTML;
+      submitBtn.style.display = 'inline-block';
+    };
+    reader.readAsText(file);
+  });
+</script>
+
+</body>
+</html>

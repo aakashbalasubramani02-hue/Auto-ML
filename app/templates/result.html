@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Analysis Results — AutoML Recommender</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+  <header>
+    <h1>&#129302; AutoML Algorithm Recommendation System</h1>
+    <p class="subtitle">Analysis Results for <strong>{{ filename }}</strong></p>
+  </header>
+
+  <a href="/" class="btn btn-outline">&#8592; Upload New Dataset</a>
+
+  <!-- ── Dataset Summary ─────────────────────────────────────────────────── -->
+  <div class="card">
+    <h2>&#128202; Dataset Summary</h2>
+    <div class="stats-grid">
+      <div class="stat-box">
+        <span class="stat-label">Rows</span>
+        <span class="stat-value">{{ shape[0] }}</span>
+      </div>
+      <div class="stat-box">
+        <span class="stat-label">Columns</span>
+        <span class="stat-value">{{ shape[1] }}</span>
+      </div>
+      <div class="stat-box">
+        <span class="stat-label">Missing Values</span>
+        <span class="stat-value">{{ total_missing }}</span>
+      </div>
+      <div class="stat-box">
+        <span class="stat-label">Classes</span>
+        <span class="stat-value">{{ n_classes }}</span>
+      </div>
+      <div class="stat-box">
+        <span class="stat-label">Target Column</span>
+        <span class="stat-value">{{ target_column }}</span>
+      </div>
+      <div class="stat-box complexity-{{ complexity | lower }}">
+        <span class="stat-label">Complexity</span>
+        <span class="stat-value">{{ complexity }}</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Dataset Preview ─────────────────────────────────────────────────── -->
+  <div class="card">
+    <h2>&#128196; Dataset Preview</h2>
+    <div class="table-wrap">
+      {{ preview_html | safe }}
+    </div>
+  </div>
+
+  <!-- ── Meta-Features ───────────────────────────────────────────────────── -->
+  <div class="card">
+    <h2>&#128300; Extracted Meta-Features</h2>
+    <table class="meta-table">
+      <thead>
+        <tr><th>Feature</th><th>Value</th></tr>
+      </thead>
+      <tbody>
+        {% for key, val in meta_features.items() %}
+        <tr>
+          <td>{{ key }}</td>
+          <td>{{ val }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ── Class Distribution ──────────────────────────────────────────────── -->
+  {% if class_dist %}
+  <div class="card">
+    <h2>&#127942; Class Distribution</h2>
+    <table class="meta-table">
+      <thead>
+        <tr><th>Class</th><th>Count</th></tr>
+      </thead>
+      <tbody>
+        {% for cls, cnt in class_dist.items() %}
+        <tr>
+          <td>{{ cls }}</td>
+          <td>{{ cnt }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% endif %}
+
+  <!-- ── Correlation Heatmap ─────────────────────────────────────────────── -->
+  {% if heatmap_file %}
+  <div class="card">
+    <h2>&#128200; Feature Correlation Heatmap</h2>
+    <div class="heatmap-wrap">
+      <img src="{{ url_for('static', filename=heatmap_file) }}"
+           alt="Correlation Heatmap">
+    </div>
+  </div>
+  {% endif %}
+
+  <!-- ── Recommendations ─────────────────────────────────────────────────── -->
+  <div class="card">
+    <h2>&#127919; Top {{ recommendations | length }} Recommended Algorithms</h2>
+
+    {% for rec in recommendations %}
+    <div class="rec-card rank-{{ loop.index }}">
+
+      <div class="rec-header">
+        <span class="rec-rank">#{{ loop.index }}</span>
+        <span class="rec-name">{{ rec.algorithm }}</span>
+        {% if loop.index == 1 %}
+          <span class="badge-best">&#11088; Best Match</span>
+        {% endif %}
+      </div>
+
+      <div class="rec-metrics">
+        <div class="rec-metric">
+          <span class="metric-label">Confidence</span>
+          <span class="metric-value">{{ rec.confidence_pct }}%</span>
+        </div>
+        <div class="rec-metric">
+          <span class="metric-label">Expected Accuracy</span>
+          <span class="metric-value">{{ rec.expected_accuracy }}%</span>
+        </div>
+      </div>
+
+      <!-- Confidence bar -->
+      <div class="progress-wrap">
+        <div class="progress-bar" style="width: {{ rec.confidence_pct }}%;"></div>
+      </div>
+      <span class="progress-label">Confidence: {{ rec.confidence_pct }}%</span>
+
+    </div>
+    {% endfor %}
+  </div>
+
+  <a href="/" class="btn" style="margin-bottom:2rem;">&#8592; Analyze Another Dataset</a>
+
+  <footer>
+    <p>AutoML Recommendation System &mdash; Meta-Learning Pipeline</p>
+  </footer>
+
+</div>
+</body>
+</html>

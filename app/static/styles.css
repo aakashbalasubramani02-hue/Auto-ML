@@ -1,0 +1,290 @@
+/* ── Reset & Base ─────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #f0f2f6;
+  color: #1e1e2e;
+  min-height: 100vh;
+}
+
+/* ── Layout ───────────────────────────────────────────────────────────────── */
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+/* ── Header ───────────────────────────────────────────────────────────────── */
+header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+header h1 {
+  font-size: 2rem;
+  color: #1a56db;
+  margin-bottom: .4rem;
+}
+
+.subtitle {
+  color: #6b7280;
+  font-size: 1rem;
+}
+
+/* ── Card ─────────────────────────────────────────────────────────────────── */
+.card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.6rem 2rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,.08);
+}
+
+.card h2 {
+  font-size: 1.2rem;
+  color: #1a56db;
+  margin-bottom: 1.2rem;
+  border-bottom: 2px solid #e5e7eb;
+  padding-bottom: .5rem;
+}
+
+/* ── Alert ────────────────────────────────────────────────────────────────── */
+.alert {
+  background: #fef3c7;
+  border: 1px solid #f59e0b;
+  color: #92400e;
+  border-radius: 8px;
+  padding: .8rem 1.2rem;
+  margin-bottom: 1.2rem;
+  font-size: .95rem;
+}
+
+/* ── Form ─────────────────────────────────────────────────────────────────── */
+.form-group {
+  margin-bottom: 1.2rem;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: .4rem;
+  color: #374151;
+}
+
+.form-group input[type="file"],
+.form-group select {
+  width: 100%;
+  padding: .6rem .9rem;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: .95rem;
+  background: #f9fafb;
+  color: #1e1e2e;
+}
+
+.form-group select:focus,
+.form-group input[type="file"]:focus {
+  outline: none;
+  border-color: #1a56db;
+}
+
+/* ── Buttons ──────────────────────────────────────────────────────────────── */
+.btn {
+  display: inline-block;
+  background: #1a56db;
+  color: #fff;
+  padding: .65rem 1.6rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background .2s;
+  margin-bottom: 1rem;
+}
+
+.btn:hover { background: #1648c0; }
+
+.btn-outline {
+  background: transparent;
+  color: #1a56db;
+  border: 2px solid #1a56db;
+}
+
+.btn-outline:hover { background: #eff6ff; }
+
+/* ── Stats Grid ───────────────────────────────────────────────────────────── */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 1rem;
+}
+
+.stat-box {
+  background: #f0f4ff;
+  border-radius: 10px;
+  padding: 1rem;
+  text-align: center;
+}
+
+.stat-label {
+  display: block;
+  font-size: .78rem;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  margin-bottom: .3rem;
+}
+
+.stat-value {
+  display: block;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #1a56db;
+}
+
+.complexity-easy   .stat-value { color: #059669; }
+.complexity-medium .stat-value { color: #d97706; }
+.complexity-hard   .stat-value { color: #dc2626; }
+
+/* ── Tables ───────────────────────────────────────────────────────────────── */
+.table-wrap {
+  overflow-x: auto;
+}
+
+.preview-table,
+.meta-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .88rem;
+}
+
+.preview-table th,
+.meta-table th {
+  background: #1a56db;
+  color: #fff;
+  padding: .55rem .8rem;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.preview-table td,
+.meta-table td {
+  padding: .5rem .8rem;
+  border-bottom: 1px solid #e5e7eb;
+  white-space: nowrap;
+}
+
+.preview-table tr:hover td,
+.meta-table tr:hover td {
+  background: #f0f4ff;
+}
+
+/* ── Heatmap ──────────────────────────────────────────────────────────────── */
+.heatmap-wrap {
+  text-align: center;
+}
+
+.heatmap-wrap img {
+  max-width: 100%;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+}
+
+/* ── Recommendation Cards ─────────────────────────────────────────────────── */
+.rec-card {
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 1.2rem 1.4rem;
+  margin-bottom: 1rem;
+  background: #fafafa;
+}
+
+.rank-1 { border-left: 5px solid #1a56db; background: #f0f4ff; }
+.rank-2 { border-left: 5px solid #059669; }
+.rank-3 { border-left: 5px solid #d97706; }
+
+.rec-header {
+  display: flex;
+  align-items: center;
+  gap: .8rem;
+  margin-bottom: .9rem;
+}
+
+.rec-rank {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #6b7280;
+}
+
+.rec-name {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #1e1e2e;
+}
+
+.badge-best {
+  background: #1a56db;
+  color: #fff;
+  font-size: .75rem;
+  font-weight: 700;
+  padding: .2rem .7rem;
+  border-radius: 20px;
+}
+
+.rec-metrics {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: .8rem;
+}
+
+.rec-metric {
+  display: flex;
+  flex-direction: column;
+}
+
+.metric-label {
+  font-size: .78rem;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+}
+
+.metric-value {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #1a56db;
+}
+
+/* ── Progress Bar ─────────────────────────────────────────────────────────── */
+.progress-wrap {
+  background: #e5e7eb;
+  border-radius: 20px;
+  height: 10px;
+  overflow: hidden;
+  margin-bottom: .3rem;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #1a56db, #3b82f6);
+  border-radius: 20px;
+  transition: width .6s ease;
+}
+
+.progress-label {
+  font-size: .8rem;
+  color: #6b7280;
+}
+
+/* ── Footer ───────────────────────────────────────────────────────────────── */
+footer {
+  text-align: center;
+  color: #9ca3af;
+  font-size: .85rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e5e7eb;
+  margin-top: 1rem;
+}
